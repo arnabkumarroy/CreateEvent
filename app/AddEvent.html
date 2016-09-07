@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Registration</title>
+    <link href="css/app.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="lib/jquery.min.js" type="application/javascript"></script>
+    <script src="lib/bootstrap.min.js" type="application/javascript"></script>
+    <script src="lib/underscore-1.4.4.min.js" type="application/javascript"></script>
+    <script src="lib/angular/angular.js" type="application/javascript"></script>
+    <script src="js/app.js" type="application/javascript"></script>
+    <script src="js/controllers/EventController.js" type="application/javascript"></script>
+    <script src="js/controllers/AddEventController.js" type="application/javascript"></script>
+    <script src="js/filters.js" type="application/javascript"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="AddEvent.html">Edit Event</a></li>
+            </ul>
+        </div>
+    </div>
+    <span ng-controller="AddEventController" style="padding-left: 20px;padding-right: 20px">
+        <div class="container">
+            <h3>New Event</h3>
+            <hr/>
+            <form name="validateForm">
+            <fieldset>
+                <label for="eventName">Event name</label>
+                    <input id="eventName" type="text" required placeholder="Enter the name of the event" ng-model="event.name">
+                 <label for="eventDate">Event Date</label>
+                    <input id="eventDate" type="text" required placeholder="Date in dd/mm/yyyy" ng-model="event.Date">
+                  <label for="eventTime">Event Time</label>
+                    <input id="eventTime" type="text" placeholder="Enter duration of the event">
+                    <label for="eventLocation">Event Location</label>
+                    <input id="eventLocation" type="text" placeholder="Address of the event" ng-model="event.Location">
+                    <br/>
+                    <input id="eventCity" class="input-small" type="text" placeholder="City Name" ng-model="event.CityName">
+                    <input id="eventProvince" class="input-small" type="text" placeholder="Enter the name of the event" ng-model="event.province">
+
+                    <label for="eventUrl">Event Url</label>
+                    <input id="eventUrl" type="url" placeholder="Url .." class="input-xlarge" ng-model="event.img">
+                    <br/>
+                    <img ng-src="{{event.img}}" src="">
+                    <div>{{event.name}}</div>
+                <br/>
+                <br/>
+            </fieldset>
+                <button type="submit" ng-disabled="validateForm.$invalid" class="btn btn-primary" ng-click="saveEvent(event,validateForm)">Submit</button>
+                <button type="button" class="btn btn-warning" ng-click="cancelEvent(event)">Cancel</button>
+
+            </form>
+        </div>
+
+</span>
+</div>
+</body>
+</html>
