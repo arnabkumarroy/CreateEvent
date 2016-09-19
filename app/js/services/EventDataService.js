@@ -2,12 +2,12 @@
  * Created by ARNAB on 9/7/2016.
  */
 'use strict';
-eventsApp.factory('eventData', function ($http,$log) {
+eventsApp.factory('eventData', function ($resource) {
 
     return {
         getEventData: function () {
 
-           return $http({method: 'GET',url: '/data/event/1'});
+           return $resource('/user/:userId', {userId:'@id'}).get({id:1});
 
     }
     }
