@@ -5,19 +5,9 @@
 eventsApp.factory('eventData', function ($http,$log) {
 
     return {
-        getEventData: function (SuccessCallback) {
+        getEventData: function () {
 
-            $http({method: 'GET',url: '/someUrl'})
-                .success(function successCallback(data, status, header, config) {
-                // this callback will be called asynchronously
-                // when the response is available
-                    SuccessCallback(data);
-            })
-                .error(function errorCallback(data, status, header, config) {
-                    // this callback will be called asynchronously
-                    // when the response is available
-                    $log.warn(data, status, header, config);
-                })
+           return $http({method: 'GET',url: '/data/event/1'});
 
     }
     }

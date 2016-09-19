@@ -1,10 +1,16 @@
 'use strict';
 eventsApp.controller('EventController',
-    function EventController($scope, eventData) {
+    function EventController($scope,$log, eventData) {
 
     $scope.sortCreator='Creator';
-        eventData.getEventData(function (event) {
+        eventData.getEventData()
+        .success(function (event) {
             $scope.event=event;
+        })
+            .error(function errorCallback(data, status, header, config) {
+            // this callback will be called asynchronously
+            // when the response is available
+            $log.warn(data, status, header, config);
         });
 
         //$scope.event=eventData.event;
