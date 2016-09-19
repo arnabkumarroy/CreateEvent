@@ -3,12 +3,20 @@
  */
 'use strict';
 eventsApp.factory('eventData', function ($resource) {
-
+    var resourceDetails=$resource('/user/:userId', {userId:'@id'});
     return {
         getEventData: function () {
 
-           return $resource('/user/:userId', {userId:'@id'}).get({id:1});
+           return resourceDetails.get({id:1});
 
     }
+    };
+
+    return {
+        saveEventData: function () {
+            event.id='999';
+            return resourceDetails.save(event);
+
+        }
     }
 });
